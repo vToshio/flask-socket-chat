@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
     <title>{{ titulo }}</title>
+    <style>
+        .oculto {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <main>
+        <p id="user" class="oculto">{{ session['username'] }}</p>
+        <p id="address" class="oculto">{{ session['ip']}}</p>
+
         <section id="chat">
             <!--Entrada das mensagens no chat-->
         </section>
@@ -15,17 +23,51 @@
         <section class="container w-50 mx-auto">
             <div class="row align-items-center">
                 <div class="col">
-                    <input type="text" name="mensagem" id="mensagem" class="form-control" required>
+                    <input type="text" placeholder="Insira uma mensagem" name="mensagem" id="mensagem" class="form-control" required>
                 </div>
                 <div class="col">
-                    <button id="enviar" type="button" class="btn btn-primary"></button>
+                    <button id="enviar" type="button" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <script>
+    <script type="text/javascript">
+        // Obter informações de Sessão
+        var address = document.getElementById('address').textContent;
+        var user = document.getElementById('user').textContent;
         
+        // Objetos manipulados
+        let enviar = document.getElementById('enviar');
+        
+        const socket = io.connect('http://10.10.10.199:5000');
+        
+        // Evento de Conexão Server-side
+        socket.on('connect', () => {
+            // Evento server-side que registra os dados de um novo visitante
+            socket.emit('new_host', address, user); 
+        });
+        
+        // Evento acionado ao clicar em Enviar
+        enviar.addEventListener('click', () => {
+            let msg = document.getElementById('mensagem');
+            
+            /* 
+            Envio da mensagem para o servidor, que acionará o evento
+            client-side de adicionar uma nova mensagem ao chat
+            */  
+            socket.emit('nova_mensagem', user, address, msg.value)
+            msg.value = ''; // Esvaziar o input
+        });
+        
+        // Evento client-side que adicionará uma nova mensagem no chat
+        socket.on('add_chat_message', (dados) => {
+            let chat = document.getElementById('chat');
+            let nova_msg = document.createElement('p');
+            
+            nova_msg.textContent = `${dados['username']}: ${dados['mensagem']}`
+            chat.appendChild(nova_msg)
+        });
     </script>
 </body>
 </html>

@@ -4,12 +4,19 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def login():
-    pass
+    session['username'] = None
+    session['ip'] = None
+    return render_template('login.html', titulo='Login')
 
 @views.route('/auth-login', methods=['POST'])
 def auth_login():
-    pass
+    proxima = request.form['proxima']
+    session['username'] = request.form['username']
+    session['ip'] = request.remote_addr
+    return redirect(proxima)
 
 @views.route('/chat')
 def chat():
-    pass
+    if 'username' not in session.keys() or session['username'] is None:
+        return redirect(url_for('views.login', proxima=url_for('views.chat')))
+    return render_template('chat.html', titulo='Socket Chat', session=session)
