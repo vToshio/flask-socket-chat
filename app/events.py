@@ -8,8 +8,8 @@ def handle_new_host(ip: str, username: str):
     print(f'{username} - {ip}')
     
     # Adicionando todos os visitantes em um arquivo de texto
-    with open('visitas.txt', 'w') as file:
-        file.write(f'{username} - {ip}')
+    with open('visitas.txt', 'a') as file:
+        file.write(f'{username} - {ip}\n')
     file.close()
 
 @socket.on('nova_mensagem')
@@ -18,8 +18,8 @@ def handle_new_message(username: str, ip: str, msg: str):
     print(registro)
 
     # Adição do registro de envio de mensagem pra um arquivo
-    with open('chatlog.txt', 'w') as chatlog:
-        chatlog.write(registro)
+    with open('chatlog.txt', 'a') as chatlog:
+        chatlog.write(f'{registro}\n')
     chatlog.close()
 
     # Definição dos dados que serão enviados ao cliente
