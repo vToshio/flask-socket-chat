@@ -16,12 +16,12 @@ Desenvolvida como trabalho de faculdade para a disciplina de Redes de Computador
 ## Sumário
 
 1) [Definição de WebSocket](#o-que-é-um-websocket)
-    1-a. [Como Funciona um WebSocket?](#como-funciona-um-websocket)
-    1-b. [Socket.io: Solução para WebSockets](#socketio-solução-para-websockets)
-    1-c. [Quando WebSockets são utilizadas?](#quando-são-utilizados)
+    - [Como Funciona um WebSocket?](#como-funciona-um-websocket)
+    - [Socket.io: Solução para WebSockets](#socketio-solução-para-websockets)
+    - [Quando WebSockets são utilizadas?](#quando-são-utilizados)
 2) [Sobre a Aplicação](#sobre-a-aplicação)
-    2.a. [Endpoints](#endpoints)
-    2.b. [Eventos](#eventos)
+    - [Endpoints](#endpoints)
+    - [Eventos](#eventos)
 3) [Instalação e Execução](#instalação-e-execução-do-programa)
 4) [Fontes de Estudo](#bases-de-estudo)
 
