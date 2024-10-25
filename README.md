@@ -2,7 +2,7 @@
 
 Aplicação cliente-servidor para **transmissão de mensagens em Broadcast**.
 
-Desenvolvida como trabalho de faculdade para a disciplina de Redes de Computadores, da [Fundação Hermínio Ometto (FHO)](www.fho.edu.br)
+Desenvolvida como trabalho de faculdade para a disciplina de Redes de Computadores, da [Fundação Hermínio Ometto (FHO)](https://www.fho.edu.br)
 
 ## Tecnologias Utilizadas
 
@@ -111,7 +111,7 @@ Eventos de Callback que definem a comunicação entre o cliente e o servidor no 
 
 #### Windows
 
-A instalação pode ser realizada a partir [deste link](), na página oficial do Python.
+A instalação pode ser realizada a partir [deste link](https://www.python.org/downloads/windows/), na página oficial do Python.
 
 #### Linux
 
