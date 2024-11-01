@@ -18,6 +18,12 @@
         <p id="user" class="oculto">{{ session['username'] }}</p>
         <p id="address" class="oculto">{{ session['ip']}}</p>
 
+        <section class="container">
+            <form action="{{ url_for('views.logout') }}" method="post">
+                <button id="sair" type="submit" class="btn btn-danger">Sair</button>
+            </form>
+        </section>
+
         <section id="chat" class="container w-50 mx-auto mt-4">
             <!--Entrada das mensagens no chat-->
         </section>
@@ -25,7 +31,7 @@
         <section class="fixed-bottom w-100 mx-auto">
             <div class="row align-items-center text-center p-3">
                 <div class="col">
-                    <input type="text" placeholder="Insira uma mensagem" name="mensagem" id="mensagem" class="form-control" required>
+                    <input id="mensagem" type="text" placeholder="Insira uma mensagem" name="mensagem" id="mensagem" class="form-control" required>
                 </div>
                 <div class="col-3">
                     <button id="enviar" type="button" class="btn btn-primary">Enviar</button>

@@ -18,5 +18,11 @@ def auth_login():
 @views.route('/chat')
 def chat():
     if 'username' not in session.keys() or session['username'] is None:
-        return redirect(url_for('views.login', proxima=url_for('views.chat')))
+        return redirect(url_for('views.logout'))
     return render_template('chat.html', titulo='Socket Chat', session=session)
+
+@views.route('/logout', methods=['POST'])
+def logout():
+    session['username'] = None
+    session['ip'] = None
+    return redirect(url_for('views.login', proxima=url_for('views.chat')))
