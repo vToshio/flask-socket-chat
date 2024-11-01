@@ -83,7 +83,8 @@ Eventos de Callback que definem a comunicação entre o cliente e o servidor no 
 | new_host       | Cliente  | Servidor  |
 | host_join_room | Servidor | Cliente   |
 | new_message    | Cliente  | Servidor  |
-| add_chat_message | Servidor | Cliente |
+| host_logout | Cliente | Servidor |
+| chat_warning | Servidor | Cliente |
 
 #### Ciclo de Eventos
 
