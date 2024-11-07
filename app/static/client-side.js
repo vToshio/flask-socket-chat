@@ -5,7 +5,7 @@ var user = document.getElementById('user').textContent;
 // Objetos manipulados
 let enviar = document.getElementById('enviar');
 let sair = document.getElementById('sair');
-const socket = io.connect('http://10.10.10.199:5000');
+const socket = io.connect('http://localhost:5000');
 
 function handle_emit_message() {
     let msg = document.getElementById('mensagem');

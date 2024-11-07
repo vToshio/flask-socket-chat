@@ -5,11 +5,11 @@ socket = SocketIO(cors_allowed_origins='*')
 
 @socket.on('new_host')
 def handle_new_host(username: str, ip: str):    
-    conexao = f'[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] {username} ({ip}) conectou-se com o servidor!'
+    conexao = f'[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] [LOGIN] {username} ({ip}) conectou-se com o servidor!'
     print(conexao)
 
     # Adicionando todos os visitantes em um log de texto
-    with open('visitas.txt', 'a') as file:
+    with open('chatlog.txt', 'a') as file:
         file.write(f'{conexao}\n')
     file.close()
 
@@ -18,11 +18,11 @@ def handle_new_host(username: str, ip: str):
 
 @socket.on('host_logout')
 def handle_host_logout(username: str, ip: str):    
-    logout = f'[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] {username} ({ip}) desconectou-se do servidor!'
+    logout = f'[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] [LOGOUT] {username} ({ip}) desconectou-se do servidor!'
     print(logout)
 
     # Adicionando todos os visitantes em um log de texto
-    with open('visitas.txt', 'a') as file:
+    with open('chatlog.txt', 'a') as file:
         file.write(f'{logout}\n')
     file.close()
 
@@ -32,7 +32,7 @@ def handle_host_logout(username: str, ip: str):
 @socket.on('new_message')
 def handle_new_message(username: str, ip: str, msg: str):
     msg_time = datetime.now().strftime('%H:%M')
-    registro = f'[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] {username} ({ip}) enviou: {msg}'
+    registro = f'[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] [MSG] {username} ({ip}) enviou: {msg}'
     print(registro)
 
     # Adição do registro de envio de mensagem pra um arquivo
