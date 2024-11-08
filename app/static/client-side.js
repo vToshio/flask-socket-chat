@@ -53,7 +53,8 @@ sair.addEventListener('click', () => {
 socket.on('add_chat_message', (dados) => {
     let chat = document.getElementById('chat');
     let nova_msg = document.createElement('p');
-    
+    nova_msg.style.wordBreak = 'break-all';
+
     nova_msg.textContent = `[${dados['time']}] ${dados['username']}: ${dados['mensagem']}`
     chat.appendChild(nova_msg)
 });

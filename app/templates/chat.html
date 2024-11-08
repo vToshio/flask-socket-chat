@@ -17,18 +17,18 @@
     <main>
         <p id="user" class="oculto">{{ session['username'] }}</p>
         <p id="address" class="oculto">{{ session['ip']}}</p>
-
-        <section class="container">
+        
+        <section class="d-flex justify-content-end bg-dark w-100 fixed-top">
             <form action="{{ url_for('views.logout') }}" method="post">
-                <button id="sair" type="submit" class="btn btn-danger">Sair</button>
+                <button id="sair" type="submit" class="btn btn-danger m-2">Sair</button>
             </form>
         </section>
 
-        <section id="chat" class="container w-50 mx-auto mt-4">
-            <!--Entrada das mensagens no chat-->
+        <section id="chat" class= "flex-grow-1 overflow-auto p-3 my-5">
+            <!-- Entrada das mensagens no chat -->
         </section>
 
-        <section class="fixed-bottom w-100 mx-auto">
+        <section class="fixed-bottom w-100 bg-dark">
             <div class="row align-items-center text-center p-3">
                 <div class="col">
                     <input id="mensagem" type="text" placeholder="Insira uma mensagem" name="mensagem" id="mensagem" class="form-control" required>
